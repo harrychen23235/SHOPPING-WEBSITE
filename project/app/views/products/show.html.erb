@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+  <strong>price:</strong>
+  <%= @product.price %>
+</p>
+  <strong>picture:</strong>
+  <%= image_tag @product.image.url ,class: "img-responsive"  %>
+</p>
+<%=link_to 'Back',products_path%>

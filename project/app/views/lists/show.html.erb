@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+  <% @list.order.order_items.each do |order_item| %>
+    <%= render 'carts/checkout_row', product: order_item.product, order_item: order_item, show_total: true %>
+
+  <% end %>
+  <p>
+  <strong>User name:</strong>
+  <%= @list.user.name %>
+</p>
+  <p>
+  <strong>User ID:</strong>
+  <%= @list.user.id %>
+</p>
+<p>
+  <strong>Buyer Real name:</strong>
+  <%= @list.buyer_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @list.address %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @list.telephone %>
+</p>
+
+<u><%= link_to 'Back', lists_path ,:style=>"color:orange"%></u>

@@ -1,0 +1,36 @@
+  <% current_order.order_items.each do |order_item| %>
+    <%= render 'carts/checkout_row', product: order_item.product, order_item: order_item, show_total: true %>
+
+  <% end %>
+  <h4 class="text-right">Order total: <span style="color: orange"> <%= number_to_currency current_order.subtotal %></span></h4>
+<%= form_with(model: list, local: true) do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :buyer_name %>
+    <%= form.text_field :buyer_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

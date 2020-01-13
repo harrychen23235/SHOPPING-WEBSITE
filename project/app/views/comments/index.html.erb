@@ -1,0 +1,37 @@
+
+<p id="notice"><%= notice %></p>
+<p style="text-align:justify; text-justify:inter-ideograph;">
+<h1>Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username&emsp;&emsp;&emsp;</th>
+      <th>Content&emsp;&emsp;&emsp;</th>
+	  <th>create time&emsp;&emsp;&emsp;</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% @product=Product.find(params[:product_id])%>
+    <% @product.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.content %></td>
+<td><%= comment.created_at %></td>
+		<%if current_user.name=="upadmin"%>
+       <td> <u><%= link_to 'Destroy', product_comment_path(@product.id,comment.id), method: :delete,data: { confirm: 'Are you sure?' ,:style=>"color:orange"},remote:true %></u></td>
+		<%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</p>
+<u><%=link_to 'Create',new_product_comment_path,:style=>"color:orange"%></u>
+</br>
+<u><%=link_to 'Back',products_path,:style=>"color:orange"%></u>
+

@@ -1,0 +1,40 @@
+<%= form_with(model: @product, local: true,:html=> { :multipart=> true }) do |form| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% provide(:title, 'Add new product') %>
+<h1>Add new product</h1>
+
+<% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @product,:html=> { :multipart=> true } do|f|%>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+
+      <%= f.label :active %>
+      <%= f.check_box :active %>
+	      <%= f.label :description %>
+    <%= f.text_area :description, :rows => 5 %>
+      <p>
+    <%= f.file_field :image %>
+  </p>
+      <%= f.submit "Create product", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<%end%>

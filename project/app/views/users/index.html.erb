@@ -1,0 +1,28 @@
+<% provide(:title, 'All users') %>
+
+<h1>All users</h1>
+
+<%= form_tag(search_path, id: "search_form") do %>
+  <%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", name: nil %> <% end %>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+	  name:
+      <%= user.name%>
+	   <br>
+	    email:
+	  <%= user.email%>
+		<br>
+		create_time:
+		<%= user.created_at%>
+          <% if current_user.name=="upadmin" && !current_user?(user)  %>
+		  <u><%=link_to "Comment",uc_path(:user_id=>user.id),:style=>"color:orange" %></u>
+        | <u><%= link_to "delete", user, method: :delete,
+                                      data: { confirm: "Are you sure wanna delete this User?" },:style=>"color:orange" %></u>
+          <% end %>
+
+    </li>
+  <% end %>
+</ul>

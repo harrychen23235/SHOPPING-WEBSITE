@@ -1,0 +1,26 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    No itemed added yet.  Please <u><%= link_to "add", products_index_url,:style=>"color:orange" %></u> some products to your cart.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+  <font size="5">Added <%= time_ago_in_words order_item.created_at %> ago </font> 
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+
+  <% if logged_in? %>
+      <p class="text-center"><%= link_to "Check Out", carts_checkout_path, class: 'btn btn-lg btn-primary' %>  </p>
+    <% else %>
+      <p class="text-center"><%= link_to "Login to checkout!", login_path, class: "btn btn-lg btn-primary" %></p>
+      <% end %>
+
+<% end %>

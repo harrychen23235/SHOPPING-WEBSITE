@@ -1,0 +1,9 @@
+
+  <div class="row">
+    <div class="col-xs-8">
+	<u><h4><%=link_to product.name,product_path(product),:style=>"color:orange"%></h4></u>
+      <h4 class="text-right">Unit Price: <span style="color: orange"><%= number_to_currency order_item.unit_price %></span></h4>
+      <h4 class="text-right">Quantity: <span style="color: orange"><%= order_item.quantity %></span></h4>
+      <h4 class="text-right">Total Price: <span style="color: orange"><%= number_to_currency order_item.total_price %></span></h4>
+    </div>
+  </div>

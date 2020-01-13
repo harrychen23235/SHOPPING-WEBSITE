@@ -1,0 +1,14 @@
+<% provide(:title, 'Home') %>
+
+<div class="center jumbotron">
+  <h3>BUAA小型电商系统(点击右上角help查看完整介绍)</h3>
+  <body>
+    <% if logged_in? %>
+    <%= link_to "Profile", current_user, class: "btn btn-lg btn-primary"  %>
+
+    <% else %>
+    <u><%= link_to "Sign up here", signup_path, :style=>"color:orange",class: "btn btn-lg btn-primary" %></u>
+
+    <% end %>
+  </div>
+

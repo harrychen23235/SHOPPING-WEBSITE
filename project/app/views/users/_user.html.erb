@@ -1,0 +1,9 @@
+<tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+     <td><%=user.created_at%></td>
+    <td><% if current_user.name=="upadmin" && !current_user?(user) %>
+    | <u><%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "Are you sure wanna delete this User?" },:style=>"color:orange" %></u></td>
+  <% end %>
+</tr>

@@ -1,0 +1,15 @@
+<% provide(:title, @user.name) %>
+<h1>Profile Page</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <h4 class="text-left">Name: <span style="color: orange"><%= @user.name %></span></h4>
+        <h4 class="text-left">Email: <span style="color: orange"><%= @user.email %></span></h4>
+        <h4 class="text-left">Day created: <span style="color: orange"><%= @user.created_at %></span></h4>
+        <h4 class="text-left">Profile Picture: <span style="color: orange"><%= gravatar_for @user %></span></h4>
+      </h1>
+    </section>
+  </aside>
+</div>
